@@ -16,6 +16,7 @@ productRouter.post(
 );
 productRouter.put(
   "/updateProduct/:productId",
+  upload.single("image"),
   auth,
   validation(productValidation.updateProductSchema),
   productController.updateProduct
