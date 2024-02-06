@@ -16,7 +16,6 @@ export const addProduct = catchError(async (req, res, next) => {
     image,
   } = req.body;
   let userid = req.userId;
-  req.body.createdBy = userid;
   let slug = slugify(productName);
 
   let exist = await productModel.findOne({ productName });
@@ -31,6 +30,7 @@ export const addProduct = catchError(async (req, res, next) => {
     categoryId,
     stock,
     slug,
+    createdBy: userid,
   });
   await product.save();
   res.status(201).json({ message: "Success", product });
