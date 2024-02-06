@@ -35,9 +35,9 @@ export const updateCategory = catchError(async (req, res, next) => {
     if (category.createdBy == userid || userRole === "admin") {
       let updatedCategory = await categoryModel.updateOne(
         { _id: categoryId },
-        { categoryName: categoryName, image: req.file.filename }
+        { categoryName: categoryName }
       );
-      res.json.status(200)({ message: "Success", updatedCategory });
+      res.status(200).json({ message: "Success", updatedCategory });
     } else {
       next(new Err("only admin or owner can update and delete", 400));
     }

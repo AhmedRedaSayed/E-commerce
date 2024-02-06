@@ -15,6 +15,11 @@ export const updateSchema = {
         "any.required": "ID is required",
         "string.objectId": "Invalid MongoDB ObjectId format",
       }),
+      image: Joi.string().required().messages({
+        "string.base": "image name must be a string",
+        "string.empty": "image name cannot be empty",
+        "any.required": "image name is required",
+      }),
     }),
 };
 
